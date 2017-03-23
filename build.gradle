@@ -1,0 +1,52 @@
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:1.5.2.RELEASE"
+    }
+}
+version="0.9.0"
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+
+jar {
+    baseName = 'SnagAnApplication'
+    version =  "$version"
+}
+
+ext {
+    applicationDefaultJvmArgs = [ '-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8001' ]
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter")
+    compile("com.fasterxml.jackson.core:jackson-core:2.8.7")
+    compile("org.springframework.boot:spring-boot-starter-web")
+    compile("org.springframework.boot:spring-boot-starter-data-elasticsearch")
+
+    compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.6.1'
+    compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.6.1'
+    compile group: 'net.java.dev.jna', name: 'jna', version: '4.4.0'
+
+    
+    compileOnly "org.projectlombok:lombok:1.16.16"
+
+
+    testCompile("junit:junit")
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '3.4.1'
+}
