@@ -2,8 +2,8 @@ version: '2'
 
 services:
   elasticsearch:
-    image: elasticsearch:5.2
+    image: elasticsearch:2.4.4
     ports:
        - "9200:9200"
        - "9300:9300"
-    restart: always
+    command: elasticsearch --cluster.name=snag
