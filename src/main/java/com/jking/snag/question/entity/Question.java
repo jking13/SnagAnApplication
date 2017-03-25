@@ -1,6 +1,5 @@
-package com.jking.snag.application.entity;
+package com.jking.snag.question.entity;
 
-import com.jking.snag.question.entity.Question;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,9 +9,6 @@ import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldType;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Created by john on 3/23/17.
  */
@@ -20,12 +16,12 @@ import java.util.List;
 @Wither
 @AllArgsConstructor(staticName = "of")
 @NoArgsConstructor
-@Document(indexName="application", type = "application")
-public class Application {
+@Document(indexName="question", type = "question")
+public class Question {
     @Id
     String id;
     @Field(type = FieldType.String)
-    String name;
-    @Field(type = FieldType.Nested)
-    List<ApplicationQuestion> questions = new ArrayList<>();
+    String question;
+    @Field(type = FieldType.String)
+    String answer;
 }
