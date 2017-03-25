@@ -1,4 +1,4 @@
-package com.jking.snag.controller;
+package com.jking.snag.controller.util;
 
 import lombok.Data;
 import org.springframework.data.domain.Page;

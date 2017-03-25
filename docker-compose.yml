@@ -7,3 +7,20 @@ services:
        - "9200:9200"
        - "9300:9300"
     command: elasticsearch --cluster.name=snag
+    networks:
+      - snag
+
+  spring:
+    build: ./spring
+    ports:
+       - "8000:8000"
+    depends_on:
+      - elasticsearch
+    environment:
+      - SPRING.DATA.ELASTICSEARCH.CLUSTERNODES=elasticsearch:9300
+    networks:
+      - snag
+
+networks:
+  snag:
+    driver: bridge

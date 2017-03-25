@@ -2,13 +2,9 @@ package com.jking.snag.controller;
 
 import com.jking.snag.application.ApplicationService;
 import com.jking.snag.application.entity.Application;
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import com.jking.snag.controller.util.PageWrapper;
+import com.jking.snag.controller.util.RestPage;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;

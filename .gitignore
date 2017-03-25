@@ -1,17 +1,18 @@
-.gradle
-build/
-.idea/
-data/
-out/
-log/
+spring/.gradle
+spring/build/
+spring/.idea/
+spring/data/
+spring/out/
+spring/log/
+angular/
 # Ignore Gradle GUI config
-gradle-app.setting
+spring/gradle-app.setting
 
 # Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
-!gradle-wrapper.jar
+!spring/gradle-wrapper.jar
 
 # Cache of project
-.gradletasknamecache
+spring/.gradletasknamecache
 
 # # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
 # gradle/wrapper/gradle-wrapper.properties

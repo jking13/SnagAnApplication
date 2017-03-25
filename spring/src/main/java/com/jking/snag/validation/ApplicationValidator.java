@@ -5,6 +5,7 @@ import com.jking.snag.application.entity.Application;
 import com.jking.snag.exception.ValidationException;
 import com.jking.snag.question.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -12,6 +13,7 @@ import java.util.stream.Collectors;
 /**
  * Created by john on 3/25/17.
  */
+@Component
 public class ApplicationValidator extends Validator<Application> {
 
     private final QuestionService questionService;

@@ -1,5 +1,7 @@
 package com.jking.snag.controller;
 
+import com.jking.snag.controller.util.PageWrapper;
+import com.jking.snag.controller.util.RestPage;
 import com.jking.snag.question.entity.Question;
 import com.jking.snag.question.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;

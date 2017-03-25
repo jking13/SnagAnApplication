@@ -1,4 +1,4 @@
-package com.jking.snag.controller;
+package com.jking.snag.controller.util;
 
 import lombok.Data;
 import org.springframework.data.domain.PageRequest;
@@ -13,7 +13,7 @@ public class RestPage{
     int page;
     int size;
 
-    Pageable toPage(){
+    public Pageable toPage(){
         return new PageRequest(page, size);
     }
 }
