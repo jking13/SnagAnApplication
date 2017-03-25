@@ -53,28 +53,4 @@ public class ApplicationController {
         applicationService.deleteApplication(applicationId);
         return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
-
-    @Data
-    public static class PageWrapper{
-        Page page;
-
-        //The AggregatedPageImpl returned from the elasticsearch repo can blow up when serialized due to
-        //getFacets() throwing an npe when the page is empty
-        public PageWrapper(Page page) {
-            this.page = new PageImpl(page.getContent(),
-                    new PageRequest(page.getNumber(), page.getSize()),
-                    page.getTotalElements());
-        }
-    }
-
-    //jackson needs a default constructor
-    @Data
-    public static class RestPage{
-        int page;
-        int size;
-
-        Pageable toPage(){
-            return new PageRequest(page, size);
-        }
-    }
 }
