@@ -1,4 +1,4 @@
-package com.jking.snag.repository;
+package com.jking.snag.repository.elasticsearch;
 
 import com.jking.snag.application.entity.Application;
 import org.springframework.data.repository.PagingAndSortingRepository;
