@@ -44,8 +44,13 @@ dependencies {
     compileOnly "org.projectlombok:lombok:1.16.16"
 
 
-    testCompile("junit:junit")
+    testCompile("org.mockito:mockito-core:1.9.5")
+    testCompile("org.testng:testng:6.8.8")
 }
+
+test {
+        useTestNG() 
+    }
 
 task wrapper(type: Wrapper) {
     gradleVersion = '3.4.1'
