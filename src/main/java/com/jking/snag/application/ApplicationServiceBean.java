@@ -2,7 +2,8 @@ package com.jking.snag.application;
 
 import com.jking.snag.application.entity.Application;
 import com.jking.snag.exception.NoApplicationException;
-import com.jking.snag.repository.ApplicationRespository;
+import com.jking.snag.repository.elasticsearch.ApplicationRespository;
+import com.jking.snag.validation.ApplicationValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -14,11 +15,20 @@ import org.springframework.stereotype.Component;
 @Component
 public class ApplicationServiceBean implements ApplicationService {
 
+
+    private final ApplicationRespository applicationRespository;
+    private final ApplicationValidator applicationValidator;
+
     @Autowired
-    private ApplicationRespository applicationRespository;
+    public ApplicationServiceBean(ApplicationRespository applicationRespository,
+                                  ApplicationValidator applicationValidator) {
+        this.applicationRespository = applicationRespository;
+        this.applicationValidator = applicationValidator;
+    }
 
     @Override
     public Application createApplication(Application application) {
+        applicationValidator.validate(application);
         return applicationRespository.save(application);
     }
 
