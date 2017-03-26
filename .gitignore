@@ -1,10 +1,12 @@
-spring/.gradle
+spring/.gradle/
 spring/build/
 spring/.idea/
 spring/data/
 spring/out/
 spring/log/
-angular/
+.gradle/
+.idea/
+angular/node-modules
 # Ignore Gradle GUI config
 spring/gradle-app.setting
 

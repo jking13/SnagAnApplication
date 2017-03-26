@@ -1,0 +1,12 @@
+
+<form [formGroup]="newApplicationForm" (ngSubmit)="doSave($event)" *ngIf="!loading">
+	<input formControlName="name" type="name" placeholder="Name">
+	<ul>
+		<li  *ngFor = "let question of questions">
+		id: {{question.id}} <br/>
+		question: {{question.question}}<br/>
+		<input formControlName={{question.id}} type={{question.id}} placeholder="Answer">
+		</li>
+	</ul>
+  <button type="submit">Save</button>
+</form>

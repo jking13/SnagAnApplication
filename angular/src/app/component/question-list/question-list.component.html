@@ -1,0 +1,7 @@
+<a routerLink="../questions/new">New Question</a><br/>
+Questions
+  <ul *ngIf="page">
+  	<li *ngFor = "let question of page.content">
+  		<app-question [question]=question></app-question>
+  	</li>
+  </ul>

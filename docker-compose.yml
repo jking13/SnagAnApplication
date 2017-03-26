@@ -7,6 +7,8 @@ services:
        - "9200:9200"
        - "9300:9300"
     command: elasticsearch --cluster.name=snag
+    environment:
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     networks:
       - snag
 
@@ -18,6 +20,15 @@ services:
       - elasticsearch
     environment:
       - SPRING.DATA.ELASTICSEARCH.CLUSTERNODES=elasticsearch:9300
+    networks:
+      - snag
+
+  angular:
+    build: ./angular
+    depends_on:
+      - spring
+    ports:
+      - "4200:4200"
     networks:
       - snag
 

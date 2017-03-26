@@ -1,0 +1,9 @@
+id: {{application.id}}<br/>
+name: {{application.name}}<br/>
+Answers:
+<ul>
+	<li *ngFor = "let question of application.questions">
+	Question Id: {{question.id}}<br/>
+	answer: {{question.answer}}
+	</li>
+</ul>

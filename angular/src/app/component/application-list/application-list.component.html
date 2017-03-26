@@ -1,0 +1,7 @@
+<a routerLink="../applications/new">New Application</a><br/>
+Applications
+  <ul *ngIf="page">
+  	<li *ngFor = "let application of page.content">
+  		<app-application [application]=application></app-application>
+  	</li>
+  </ul>
