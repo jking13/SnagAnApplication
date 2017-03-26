@@ -33,4 +33,8 @@ export class NewQuestionComponent implements OnInit {
     .subscribe(result =>_this.router.navigate(['questions']));
   }
 
+  cancel(){
+  	this.router.navigate(['questions']);
+  }
+
 }

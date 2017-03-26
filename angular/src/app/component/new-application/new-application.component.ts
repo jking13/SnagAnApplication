@@ -58,6 +58,10 @@ export class NewApplicationComponent implements OnInit {
     .subscribe(result =>_this.router.navigate(['applications']));
   }
 
+  cancel(){
+    this.router.navigate(['applications']);
+  }
+
   ngOnInit() {
   }
 
