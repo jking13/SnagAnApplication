@@ -15,20 +15,24 @@ export class ApplicationListComponent implements OnInit {
   page: Page<Application>;
 
   constructor(private applicationService: ApplicationService) {
-     this.refresh()
+     this.refresh(0)
    }
 
-   refresh(){
+   refresh(pageNumber){
      var _this = this;
-    this.applicationService.getApplications(0, 20).subscribe(data =>
+    this.applicationService.getApplications(pageNumber, 1).subscribe(data =>
       _this.page = data
     );
+   }
+
+   pageNumberChange(event) {
+     this.refresh(event);
    }
 
    delete(id){
      var _this = this;
     this.applicationService.deleteApplication(id).subscribe(data =>
-      _this.refresh()
+      _this.refresh(0)
     );
    }
 

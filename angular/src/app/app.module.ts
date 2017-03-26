@@ -13,6 +13,7 @@ import { routes } from './app.router';
 import { HomeComponent } from './component/home/home.component';
 import { NewApplicationComponent } from './component/new-application/new-application.component';
 import { NewQuestionComponent } from './component/new-question/new-question.component';
+import { PagerComponent } from './component/pager/pager.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { NewQuestionComponent } from './component/new-question/new-question.comp
     ApplicationListComponent,
     HomeComponent,
     NewApplicationComponent,
-    NewQuestionComponent
+    NewQuestionComponent,
+    PagerComponent
   ],
   imports: [
     BrowserModule,

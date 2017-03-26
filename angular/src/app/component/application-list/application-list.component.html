@@ -6,3 +6,4 @@ Applications
   		<button (click)="delete(application.id)">Delete</button>
   	</li>
   </ul>
+   <app-pager [page]=page  (pageNumberChange)="pageNumberChange($event)"></app-pager>
