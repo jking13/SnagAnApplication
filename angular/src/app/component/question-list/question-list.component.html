@@ -3,5 +3,6 @@ Questions
   <ul *ngIf="page">
   	<li *ngFor = "let question of page.content">
   		<app-question [question]=question></app-question>
+  		<button (click)="delete(question.id)">Delete</button>
   	</li>
   </ul>

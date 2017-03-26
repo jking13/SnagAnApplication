@@ -3,5 +3,6 @@ Applications
   <ul *ngIf="page">
   	<li *ngFor = "let application of page.content">
   		<app-application [application]=application></app-application>
+  		<button (click)="delete(application.id)">Delete</button>
   	</li>
   </ul>

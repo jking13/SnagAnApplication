@@ -14,6 +14,7 @@ export class ApplicationService extends BaseService{
 
   applicationsListUrl = this.baseUrl + '/applications/list';
   newApplicationUrl = this.baseUrl + '/applications';
+  deleteApplicationUrl = this.baseUrl + '/applications';
 
   constructor(private http: Http) { 
     super();
@@ -31,9 +32,15 @@ export class ApplicationService extends BaseService{
   }
 
   saveApplication(application): Observable<any> {
-    console.log("service saving: ");
-    console.log(application);
     return this.http.post(this.newApplicationUrl, application, this.headers)
+    .catch((error:any) => {
+      console.log(error);
+      return Observable.throw(error.json().error || 'Server error');
+    });
+  }
+
+  deleteApplication(application): Observable<any> {
+    return this.http.delete(this.deleteApplicationUrl + "/" + application, this.headers)
     .catch((error:any) => {
       console.log(error);
       return Observable.throw(error.json().error || 'Server error');

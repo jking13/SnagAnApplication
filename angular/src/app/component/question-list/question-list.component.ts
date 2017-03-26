@@ -15,9 +15,20 @@ export class QuestionListComponent implements OnInit {
   page: Page<Question>;
 
   constructor(private questionService: QuestionService) {
-    var _this = this;
+    this.refresh();
+   }
+
+   refresh(){
+     var _this = this;
     this.questionService.getQuestions(0, 20).subscribe(data =>
       _this.page = data
+    );
+   }
+
+   delete(id){
+     var _this = this;
+    this.questionService.deleteQuestion(id).subscribe(data =>
+      _this.refresh()
     );
    }
 

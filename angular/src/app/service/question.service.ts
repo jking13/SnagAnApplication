@@ -14,6 +14,7 @@ export class QuestionService extends BaseService{
 
   questionsListUrl = this.baseUrl + '/questions/list';
   newQuestionUrl = this.baseUrl + '/questions';
+  deleteQuestionUrl = this.baseUrl + '/questions';
 
   constructor(private http: Http) { 
     super();
@@ -31,9 +32,16 @@ export class QuestionService extends BaseService{
   }
 
   saveQuestion(question): Observable<any> {
-    console.log("service saving: ");
-    console.log(question);
     return this.http.post(this.newQuestionUrl, question, this.headers)
+    .catch((error:any) => {
+      console.log(error);
+      return Observable.throw(error.json().error || 'Server error');
+    });
+  }
+
+  deleteQuestion(question): Observable<any> {
+    console.log("deleting question: " + question);
+    return this.http.delete(this.deleteQuestionUrl + "/" + question, this.headers)
     .catch((error:any) => {
       console.log(error);
       return Observable.throw(error.json().error || 'Server error');
