@@ -20,10 +20,9 @@ export class QuestionListComponent implements OnInit {
 
    refresh(pageNumber){
      var _this = this;
-    this.questionService.getQuestions(pageNumber, 1).subscribe(data =>{
-      _this.page = data;
-      console.log(_this.page);
-    });
+    this.questionService.getQuestions(pageNumber, 1).subscribe(data =>
+      _this.page = data
+    );
    }
 
    pageNumberChange(event) {
