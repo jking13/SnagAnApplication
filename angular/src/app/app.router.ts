@@ -8,7 +8,7 @@ import { NewApplicationComponent } from './component/new-application/new-applica
 import { HomeComponent } from './component/home/home.component'
 
 export const router: Routes = [
-	{path: '', redirectTo: 'home', pathMatch: 'full'},
+	{path: '', redirectTo: 'applications', pathMatch: 'full'},
 	{path: 'questions', component: QuestionListComponent},
 	{path: 'questions/new', component: NewQuestionComponent},
 	{path: 'applications', component: ApplicationListComponent},
