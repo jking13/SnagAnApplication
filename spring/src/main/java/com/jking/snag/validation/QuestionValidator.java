@@ -10,8 +10,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class QuestionValidator extends Validator<Question>{
     @Override
-    public void validate(Question question) {
+    public Boolean validate(Question question) {
         validateString(question.getQuestion(), "question is required");
         validateString(question.getAnswer(), "answer is required");
+        return true;
     }
 }

@@ -28,8 +28,10 @@ public class ApplicationServiceBean implements ApplicationService {
 
     @Override
     public Application createApplication(Application application) {
-        applicationValidator.validate(application);
-        return applicationRespository.save(application);
+        if(applicationValidator.validate(application)){
+            return applicationRespository.save(application);
+        }
+        return application;
     }
 
     @Override

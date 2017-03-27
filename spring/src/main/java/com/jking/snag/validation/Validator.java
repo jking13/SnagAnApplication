@@ -8,7 +8,7 @@ import org.apache.commons.lang.StringUtils;
  * Created by john on 3/25/17.
  */
 public abstract class Validator<T> {
-    abstract void validate(T t);
+    abstract Boolean validate(T t);
 
     void validateString(String str, String message){
         if(StringUtils.isEmpty(str))

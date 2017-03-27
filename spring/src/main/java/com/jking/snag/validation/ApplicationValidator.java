@@ -24,7 +24,7 @@ public class ApplicationValidator extends Validator<Application> {
     }
 
     @Override
-    public void validate(Application application) {
+    public Boolean validate(Application application) {
         validateString(application.getName(), "applicant name is required");
         application.getQuestions()
                 .forEach(question -> {
@@ -42,9 +42,7 @@ public class ApplicationValidator extends Validator<Application> {
                     applicationQuestionOpt.ifPresent(applicationQuestion -> applicationQuestion.setQuestion(question.getQuestion()));
                     return !applicationQuestionOpt.isPresent();
                 });
-        if (missingCorrectAnswer) {
-            throw new ValidationException("application doesn't correctly answer all questions");
-        }
+        return !missingCorrectAnswer;
 
     }
 }

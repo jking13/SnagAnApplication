@@ -17,6 +17,8 @@ import java.util.List;
 
 import static org.mockito.Mockito.reset;
 import static org.mockito.Mockito.when;
+import static org.testng.Assert.assertFalse;
+import static org.testng.Assert.assertTrue;
 
 /**
  * Created by john on 3/25/17.
@@ -51,16 +53,15 @@ public class ApplicationValidatorTests {
         //throws validation exception
     }
 
-    @Test(expectedExceptions = ValidationException.class,
-            expectedExceptionsMessageRegExp = "application doesn't correctly answer all questions")
+    @Test
     public void testNoQuestions() {
         //given
         Application application = new Application()
                 .withName("name");
         //when
-        validator.validate(application);
+        Boolean valid = validator.validate(application);
         //then
-        //throws validation exception
+        assertFalse(valid);
     }
 
     @Test(expectedExceptions = ValidationException.class,
@@ -91,8 +92,7 @@ public class ApplicationValidatorTests {
         //throws validation exception
     }
 
-    @Test(expectedExceptions = ValidationException.class,
-            expectedExceptionsMessageRegExp = "application doesn't correctly answer all questions")
+    @Test
     public void testMissingQuestion() {
         //given
         Application application = new Application()
@@ -101,13 +101,12 @@ public class ApplicationValidatorTests {
                         .withId("id1")
                         .withAnswer("answer1")));
         //when
-        validator.validate(application);
+        Boolean valid = validator.validate(application);
         //then
-        //throws validation exception
+        assertFalse(valid);
     }
 
-    @Test(expectedExceptions = ValidationException.class,
-            expectedExceptionsMessageRegExp = "application doesn't correctly answer all questions")
+    @Test
     public void testWrongIds() {
         //given
         Application application = new Application()
@@ -119,13 +118,12 @@ public class ApplicationValidatorTests {
                                 .withId("wrong")
                                 .withAnswer("answer2")));
         //when
-        validator.validate(application);
+        Boolean valid = validator.validate(application);
         //then
-        //throws validation exception
+        assertFalse(valid);
     }
 
-    @Test(expectedExceptions = ValidationException.class,
-            expectedExceptionsMessageRegExp = "application doesn't correctly answer all questions")
+    @Test
     public void testWrongAnswers() {
         //given
         Application application = new Application()
@@ -137,9 +135,9 @@ public class ApplicationValidatorTests {
                                 .withId("id2")
                                 .withAnswer("wrong")));
         //when
-        validator.validate(application);
+        Boolean valid = validator.validate(application);
         //then
-        //throws validation exception
+        assertFalse(valid);
     }
 
     @Test
@@ -154,9 +152,9 @@ public class ApplicationValidatorTests {
                                 .withId("id2")
                                 .withAnswer("answer2")));
         //when
-        validator.validate(application);
+        Boolean valid = validator.validate(application);
         //then
-        //exception isn't thrown
+        assertTrue(valid);
     }
 
     private List<Question> storedQuestions() {
