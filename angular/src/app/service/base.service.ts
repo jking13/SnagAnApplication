@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { environment } from '../../environments/environment';
 
 export class BaseService {
 
@@ -6,7 +7,7 @@ export class BaseService {
     'Content-Type': 'application/json'
   };
 
-  baseUrl = "http://localhost:8000";
+  baseUrl = environment.apiUrl;
 
   constructor() { }
 
