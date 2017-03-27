@@ -1,6 +1,6 @@
-import { ApplicationQuestion } from './application-question'
+import { Question } from './question'
 export class Application {
 	name: string;
 	id: string;
-	questions: Array<ApplicationQuestion>;
+	questions: Array<Question>;
 }

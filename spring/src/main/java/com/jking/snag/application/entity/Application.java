@@ -27,5 +27,5 @@ public class Application {
     @Field(type = FieldType.String)
     String name;
     @Field(type = FieldType.Nested)
-    List<ApplicationQuestion> questions = new ArrayList<>();
+    List<Question> questions = new ArrayList<>();
 }

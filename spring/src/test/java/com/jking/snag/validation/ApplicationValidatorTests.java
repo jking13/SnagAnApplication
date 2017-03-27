@@ -2,7 +2,6 @@ package com.jking.snag.validation;
 
 
 import com.jking.snag.application.entity.Application;
-import com.jking.snag.application.entity.ApplicationQuestion;
 import com.jking.snag.exception.ValidationException;
 import com.jking.snag.question.QuestionService;
 import com.jking.snag.question.entity.Question;
@@ -11,7 +10,6 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import java.util.Arrays;
@@ -71,7 +69,7 @@ public class ApplicationValidatorTests {
         //given
         Application application = new Application()
                 .withName("name")
-                .withQuestions(Arrays.asList(new ApplicationQuestion()
+                .withQuestions(Arrays.asList(new Question()
                         .withAnswer("answer1")));
         //when
         validator.validate(application);
@@ -85,7 +83,7 @@ public class ApplicationValidatorTests {
         //given
         Application application = new Application()
                 .withName("name")
-                .withQuestions(Arrays.asList(new ApplicationQuestion()
+                .withQuestions(Arrays.asList(new Question()
                         .withId("id1")));
         //when
         validator.validate(application);
@@ -99,7 +97,7 @@ public class ApplicationValidatorTests {
         //given
         Application application = new Application()
                 .withName("name")
-                .withQuestions(Arrays.asList(new ApplicationQuestion()
+                .withQuestions(Arrays.asList(new Question()
                         .withId("id1")
                         .withAnswer("answer1")));
         //when
@@ -114,10 +112,10 @@ public class ApplicationValidatorTests {
         //given
         Application application = new Application()
                 .withName("name")
-                .withQuestions(Arrays.asList(new ApplicationQuestion()
+                .withQuestions(Arrays.asList(new Question()
                                 .withId("wrong")
                                 .withAnswer("answer1"),
-                        new ApplicationQuestion()
+                        new Question()
                                 .withId("wrong")
                                 .withAnswer("answer2")));
         //when
@@ -132,10 +130,10 @@ public class ApplicationValidatorTests {
         //given
         Application application = new Application()
                 .withName("name")
-                .withQuestions(Arrays.asList(new ApplicationQuestion()
+                .withQuestions(Arrays.asList(new Question()
                                 .withId("id1")
                                 .withAnswer("wrong"),
-                        new ApplicationQuestion()
+                        new Question()
                                 .withId("id2")
                                 .withAnswer("wrong")));
         //when
@@ -149,10 +147,10 @@ public class ApplicationValidatorTests {
         //given
         Application application = new Application()
                 .withName("name")
-                .withQuestions(Arrays.asList(new ApplicationQuestion()
+                .withQuestions(Arrays.asList(new Question()
                                 .withId("id1")
                                 .withAnswer("answer1"),
-                        new ApplicationQuestion()
+                        new Question()
                                 .withId("id2")
                                 .withAnswer("answer2")));
         //when

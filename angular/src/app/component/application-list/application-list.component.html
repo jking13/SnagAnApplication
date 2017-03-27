@@ -3,7 +3,7 @@
 </a>
   <ul *ngIf="page">
   	<li *ngFor = "let application of page.content">
-  		<i (click)="delete(question.id)" class="material-icons">close</i>
+  		<i (click)="delete(application.id)" class="material-icons">close</i>
   		<app-application [application]=application></app-application>
   	</li>
   </ul>

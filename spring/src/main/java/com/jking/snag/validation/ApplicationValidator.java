@@ -4,11 +4,11 @@ package com.jking.snag.validation;
 import com.jking.snag.application.entity.Application;
 import com.jking.snag.exception.ValidationException;
 import com.jking.snag.question.QuestionService;
+import com.jking.snag.question.entity.Question;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Optional;
 
 /**
  * Created by john on 3/25/17.
@@ -32,13 +32,17 @@ public class ApplicationValidator extends Validator<Application> {
                     validateString(question.getId(), "question id is required");
                 });
         Boolean missingCorrectAnswer =
-                questionService.getQuestions().stream().anyMatch(question ->
-                        application.getQuestions().stream().noneMatch(applicationQuestion ->
-                            applicationQuestion.getId().equals(question.getId())
-                            && applicationQuestion.getAnswer().trim().equalsIgnoreCase(question.getAnswer())
-                        )
-                );
-        if(missingCorrectAnswer){
+                questionService.getQuestions().stream().anyMatch(question -> {
+                    Optional<Question> applicationQuestionOpt = application.getQuestions()
+                            .stream()
+                            .filter(applicationQuestion ->
+                                    applicationQuestion.getId().equals(question.getId())
+                                            && applicationQuestion.getAnswer().trim().equalsIgnoreCase(question.getAnswer())
+                            ).findAny();
+                    applicationQuestionOpt.ifPresent(applicationQuestion -> applicationQuestion.setQuestion(question.getQuestion()));
+                    return !applicationQuestionOpt.isPresent();
+                });
+        if (missingCorrectAnswer) {
             throw new ValidationException("application doesn't correctly answer all questions");
         }
 
