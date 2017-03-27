@@ -18,3 +18,6 @@ This application allows the user to create questions, and then create applicatio
 - Elasticsearch data store for easy searching
 - Spring Boot backend server (Swagger ui is also enabled for easy api documentation `http://localhost:8000/swagger-ui.html`)
 - Angular 2
+
+## Searching
+Searches are passed through to elasticsearch in match all query. This means that elasticsearch takes each word in the query and then matches it to the entire document which has been put through the standard analyzer. In layman's terms this means that if any word matches a word in the document (case insensitive) then the doc is returned. 
