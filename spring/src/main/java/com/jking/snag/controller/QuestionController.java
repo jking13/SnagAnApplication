@@ -1,7 +1,7 @@
 package com.jking.snag.controller;
 
 import com.jking.snag.controller.util.PageWrapper;
-import com.jking.snag.controller.util.RestPage;
+import com.jking.snag.controller.util.QueryRequest;
 import com.jking.snag.question.entity.Question;
 import com.jking.snag.question.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,8 +38,8 @@ public class QuestionController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/list")
-    public ResponseEntity<PageWrapper> getQuestions(@RequestBody RestPage page) {
-        return new ResponseEntity<>( new PageWrapper(questionService.getQuestions(page.toPage())), HttpStatus.OK);
+    public ResponseEntity<PageWrapper> getQuestions(@RequestBody QueryRequest req) {
+        return new ResponseEntity<>( new PageWrapper(questionService.getQuestions(req.toPage(), req.getQuery())), HttpStatus.OK);
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value  = "/{questionId}")

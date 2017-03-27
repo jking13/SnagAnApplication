@@ -4,6 +4,7 @@ import com.google.common.collect.Lists;
 import com.jking.snag.exception.NoQuestionException;
 import com.jking.snag.question.entity.Question;
 import com.jking.snag.repository.elasticsearch.QuestionRepository;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -57,8 +58,10 @@ public class QuestionServiceBean implements QuestionService {
     }
 
     @Override
-    public Page<Question> getQuestions(Pageable page) {
-        return questionRepository.findAll(page);
+    public Page<Question> getQuestions(Pageable page, String query) {
+        return StringUtils.isBlank(query)?
+                questionRepository.findAll(page):
+                questionRepository.query(query, page);
     }
 
     @Override

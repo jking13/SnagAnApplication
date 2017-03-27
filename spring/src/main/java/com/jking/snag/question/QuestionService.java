@@ -15,6 +15,6 @@ public interface QuestionService {
     public Question getQuestion(String id);
     public List<Question> getQuestions(List<String> ids);
     public List<Question> getQuestions();
-    public Page<Question> getQuestions(Pageable page);
+    public Page<Question> getQuestions(Pageable page, String query);
     public void deleteQuestion(String id);
 }

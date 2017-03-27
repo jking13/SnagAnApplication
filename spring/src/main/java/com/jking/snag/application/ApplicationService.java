@@ -14,6 +14,6 @@ public interface ApplicationService {
     public Application createApplication(Application application);
     public Application updateApplication(Application application);
     public Application getApplication(String id);
-    public Page<Application> getApplications(Pageable page);
+    public Page<Application> getApplications(Pageable page, String query);
     public void deleteApplication(String id);
 }

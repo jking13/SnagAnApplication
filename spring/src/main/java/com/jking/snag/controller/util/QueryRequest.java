@@ -9,9 +9,10 @@ import org.springframework.data.domain.Pageable;
  */
 //jackson needs a default constructor
 @Data
-public class RestPage{
+public class QueryRequest {
     int page;
     int size;
+    String query;
 
     public Pageable toPage(){
         return new PageRequest(page, size);

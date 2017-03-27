@@ -4,6 +4,7 @@ import com.jking.snag.application.entity.Application;
 import com.jking.snag.exception.NoApplicationException;
 import com.jking.snag.repository.elasticsearch.ApplicationRespository;
 import com.jking.snag.validation.ApplicationValidator;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -52,8 +53,10 @@ public class ApplicationServiceBean implements ApplicationService {
     }
 
     @Override
-    public Page<Application> getApplications(Pageable page) {
-        return applicationRespository.findAll(page);
+    public Page<Application> getApplications(Pageable page, String query) {
+        return StringUtils.isBlank(query)?
+                applicationRespository.findAll(page):
+                applicationRespository.query(query, page);
     }
 
     @Override

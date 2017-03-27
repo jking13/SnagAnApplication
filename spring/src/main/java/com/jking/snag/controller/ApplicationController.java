@@ -3,7 +3,7 @@ package com.jking.snag.controller;
 import com.jking.snag.application.ApplicationService;
 import com.jking.snag.application.entity.Application;
 import com.jking.snag.controller.util.PageWrapper;
-import com.jking.snag.controller.util.RestPage;
+import com.jking.snag.controller.util.QueryRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -40,8 +40,8 @@ public class ApplicationController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/list")
-    public ResponseEntity<PageWrapper> getApplications(@RequestBody RestPage page) {
-        return new ResponseEntity<>( new PageWrapper(applicationService.getApplications(page.toPage())), HttpStatus.OK);
+    public ResponseEntity<PageWrapper> getApplications(@RequestBody QueryRequest req) {
+        return new ResponseEntity<>( new PageWrapper(applicationService.getApplications(req.toPage(), req.getQuery())), HttpStatus.OK);
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value  = "/{applicationId}")
