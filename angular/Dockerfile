@@ -7,4 +7,4 @@ WORKDIR angular
 
 RUN npm install
 
-ENTRYPOINT ng serve --host 0.0.0.0
+ENTRYPOINT ng serve --host 0.0.0.0 --environment=prod
