@@ -8,7 +8,9 @@ This application allows the user to create questions, and then create applicatio
 
 ### Build Steps
 
-- `docker-compose build` (to avoid docker caching between runs)
+- `docker-compose build`
+
+### Deploying
 - `docker-compose up -d`
 - confirm application is running at `http://localhost:4200`
 
