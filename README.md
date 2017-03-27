@@ -20,4 +20,4 @@ This application allows the user to create questions, and then create applicatio
 - Angular 2
 
 ## Searching
-Searches are passed through to elasticsearch in match all query. This means that elasticsearch takes each word in the query and then matches it to the entire document which has been put through the standard analyzer. In layman's terms this means that if any word matches a word in the document (case insensitive) then the doc is returned. 
+Searches are passed through to elasticsearch in a match all query. This means that elasticsearch takes each word in the query and then matches it to the entire document which has been put through the standard analyzer. In layman's terms this means that if any word in the query matches a word in the stored document (case insensitive) then the doc is returned. 
