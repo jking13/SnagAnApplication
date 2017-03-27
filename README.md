@@ -12,7 +12,9 @@ This application allows the user to create questions, and then create applicatio
 
 ### Deploying
 - `docker-compose up -d`
-- confirm application is running at `http://localhost:4200`
+- confirm backend spring server is running at either `http://localhost:8000/app_status` or `http://localhost:8000/swagger-ui.html`
+	- it can take a couple minutes for the app to boot
+- confirm frontend is running at `http://localhost:4200`
 
 ## Tech Stack
 
