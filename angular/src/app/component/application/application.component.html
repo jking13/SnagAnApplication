@@ -1,9 +1,17 @@
-id: {{application.id}}<br/>
-name: {{application.name}}<br/>
-Answers:
-<ul>
-	<li *ngFor = "let question of application.questions">
-	Question Id: {{question.id}}<br/>
-	answer: {{question.answer}}
-	</li>
-</ul>
+<dl>
+  <dt>Applicant Name:</dt>
+  <dd>{{application.name}}</dd>
+  <dt>Answers:</dt>
+  <dd>
+  	<dl>
+  	  <div *ngFor = "let question of application.questions"> 
+  	  	<br/>
+  	  	<dt>Question Id:</dt>
+  	  	<dd>{{question.id}}</dd>
+  	  	<dt>Answer:</dt>
+  	  	<dd>{{question.answer}}</dd>
+
+  	  </div>
+  	</dl>
+  </dd>
+</dl>

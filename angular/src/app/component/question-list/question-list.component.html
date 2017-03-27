@@ -1,9 +1,10 @@
-<a routerLink="../questions/new">New Question</a><br/>
-Questions
+<a routerLink="../questions/new" class="btn btn-info">
+    <span  class="glyphicon glyphicon-plus-sign"></span> New Question
+</a>
   <ul *ngIf="page">
   	<li *ngFor = "let question of page.content">
+  		<i (click)="delete(question.id)" class="material-icons">close</i>
   		<app-question [question]=question></app-question>
-  		<button (click)="delete(question.id)">Delete</button>
   	</li>
   </ul>
   <app-pager [page]=page  (pageNumberChange)="pageNumberChange($event)"></app-pager>

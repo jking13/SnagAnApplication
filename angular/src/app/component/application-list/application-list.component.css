@@ -1,0 +1,29 @@
+a{
+  float:right;
+  position:absolute;
+  right:0px;
+}
+i {
+  color: red; 
+  float:left;
+  cursor: pointer;
+  position:absolute;
+  left:0px;
+}
+ 
+ul {
+  list-style-type: none;
+}
+ 
+li {
+  overflow: auto;
+  width: 100%;
+  border-bottom: 1px solid #999897;
+  padding: 0;
+  display: inline-block;
+
+}
+
+li:hover {
+    background-color: #d9d5d1;
+}

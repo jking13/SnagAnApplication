@@ -20,7 +20,7 @@ export class QuestionListComponent implements OnInit {
 
    refresh(pageNumber){
      var _this = this;
-    this.questionService.getQuestions(pageNumber, 1).subscribe(data =>
+    this.questionService.getQuestions(pageNumber, 20).subscribe(data =>
       _this.page = data
     );
    }

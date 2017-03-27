@@ -1,9 +1,10 @@
-<a routerLink="../applications/new">New Application</a><br/>
-Applications
+<a style="float: right;" routerLink="../applications/new" class="btn btn-info">
+    <span  class="glyphicon glyphicon-plus-sign"></span> New Application
+</a>
   <ul *ngIf="page">
   	<li *ngFor = "let application of page.content">
+  		<i (click)="delete(question.id)" class="material-icons">close</i>
   		<app-application [application]=application></app-application>
-  		<button (click)="delete(application.id)">Delete</button>
   	</li>
   </ul>
    <app-pager [page]=page  (pageNumberChange)="pageNumberChange($event)"></app-pager>

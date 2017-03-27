@@ -20,7 +20,7 @@ export class ApplicationListComponent implements OnInit {
 
    refresh(pageNumber){
      var _this = this;
-    this.applicationService.getApplications(pageNumber, 1).subscribe(data =>
+    this.applicationService.getApplications(pageNumber, 20).subscribe(data =>
       _this.page = data
     );
    }
