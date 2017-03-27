@@ -1,6 +1,9 @@
 # SnagAnApplication/Angular
 Angular 2 portion of SnagAnApplication.
 
+##Running remotely
+- change the apiUrl value in src/environments/environment.prod.ts file to point to your spring server
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
 
 ## Development server
