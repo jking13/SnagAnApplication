@@ -21,7 +21,7 @@ export class ApplicationListComponent implements OnInit {
 
    refresh(pageNumber){
      var _this = this;
-    this.applicationService.getApplications(pageNumber, 10, this.searchTerm).subscribe(data =>
+    this.applicationService.getApplications(pageNumber, 5, this.searchTerm).subscribe(data =>
       _this.page = data
     );
    }
