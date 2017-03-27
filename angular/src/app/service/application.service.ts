@@ -20,10 +20,11 @@ export class ApplicationService extends BaseService{
     super();
   }
 
-  getApplications(page, size) : Observable<Page<Application>> {
+  getApplications(page, size, query) : Observable<Page<Application>> {
     return this.http.post(this.applicationsListUrl, {
       "page":page,
-      "size":size
+      "size":size,
+      "query":query
     },
     this.headers)
     .map((res:Response) => res.json().page)
@@ -34,7 +35,6 @@ export class ApplicationService extends BaseService{
   saveApplication(application): Observable<any> {
     return this.http.post(this.newApplicationUrl, application, this.headers)
     .catch((error:any) => {
-      console.log(error);
       return Observable.throw(error.json().error || 'Server error');
     });
   }
@@ -42,7 +42,6 @@ export class ApplicationService extends BaseService{
   deleteApplication(application): Observable<any> {
     return this.http.delete(this.deleteApplicationUrl + "/" + application, this.headers)
     .catch((error:any) => {
-      console.log(error);
       return Observable.throw(error.json().error || 'Server error');
     });
   }

@@ -13,6 +13,7 @@ import { Page } from '../../model/page';
 export class QuestionListComponent implements OnInit {
 
   page: Page<Question>;
+  searchTerm: string = '';
 
   constructor(private questionService: QuestionService) {
     this.refresh(0);
@@ -20,13 +21,18 @@ export class QuestionListComponent implements OnInit {
 
    refresh(pageNumber){
      var _this = this;
-    this.questionService.getQuestions(pageNumber, 10).subscribe(data =>
+    this.questionService.getQuestions(pageNumber, 10, this.searchTerm).subscribe(data =>
       _this.page = data
     );
    }
 
    pageNumberChange(event) {
      this.refresh(event);
+   }
+
+   searchChange(event) {
+     this.searchTerm = event;
+     this.refresh(0);
    }
 
    delete(id){

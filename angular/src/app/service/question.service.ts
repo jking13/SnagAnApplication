@@ -20,10 +20,11 @@ export class QuestionService extends BaseService{
     super();
   }
 
-  getQuestions(page, size) : Observable<Page<Question>> {
+  getQuestions(page, size, query) : Observable<Page<Question>> {
     return this.http.post(this.questionsListUrl, {
       "page":page,
-      "size":size
+      "size":size,
+      "query":query
     },
     this.headers)
     .map((res:Response) => res.json().page)
@@ -34,7 +35,6 @@ export class QuestionService extends BaseService{
   saveQuestion(question): Observable<any> {
     return this.http.post(this.newQuestionUrl, question, this.headers)
     .catch((error:any) => {
-      console.log(error);
       return Observable.throw(error.json().error || 'Server error');
     });
   }
@@ -43,7 +43,6 @@ export class QuestionService extends BaseService{
     console.log("deleting question: " + question);
     return this.http.delete(this.deleteQuestionUrl + "/" + question, this.headers)
     .catch((error:any) => {
-      console.log(error);
       return Observable.throw(error.json().error || 'Server error');
     });
   }

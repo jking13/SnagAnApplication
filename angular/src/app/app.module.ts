@@ -14,6 +14,7 @@ import { HomeComponent } from './component/home/home.component';
 import { NewApplicationComponent } from './component/new-application/new-application.component';
 import { NewQuestionComponent } from './component/new-question/new-question.component';
 import { PagerComponent } from './component/pager/pager.component';
+import { SearchBarComponent } from './component/search-bar/search-bar.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { PagerComponent } from './component/pager/pager.component';
     HomeComponent,
     NewApplicationComponent,
     NewQuestionComponent,
-    PagerComponent
+    PagerComponent,
+    SearchBarComponent
   ],
   imports: [
     BrowserModule,

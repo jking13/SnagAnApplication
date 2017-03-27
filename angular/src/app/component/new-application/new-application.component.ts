@@ -26,7 +26,7 @@ export class NewApplicationComponent implements OnInit {
   				private applicationService: ApplicationService,
   				private router: Router) { 
   	var _this = this;
-    this.questionService.getQuestions(0, 100).subscribe(data => {
+    this.questionService.getQuestions(0, 100, '').subscribe(data => {
       _this.questions = data.content;
       _this.loadQuestionsToForm();
       _this.loading = false;
@@ -34,7 +34,6 @@ export class NewApplicationComponent implements OnInit {
   }
 
   loadQuestionsToForm(){
-  	console.log(this.questions);
   	this.questions.forEach(question =>{
   	  this.newApplicationForm.addControl(question.id, new FormControl("", Validators.required));
   	});

@@ -13,6 +13,7 @@ import { Page } from '../../model/page';
 export class ApplicationListComponent implements OnInit {
 
   page: Page<Application>;
+  searchTerm: string = '';
 
   constructor(private applicationService: ApplicationService) {
      this.refresh(0)
@@ -20,9 +21,14 @@ export class ApplicationListComponent implements OnInit {
 
    refresh(pageNumber){
      var _this = this;
-    this.applicationService.getApplications(pageNumber, 10).subscribe(data =>
+    this.applicationService.getApplications(pageNumber, 10, this.searchTerm).subscribe(data =>
       _this.page = data
     );
+   }
+
+   searchChange(event) {
+     this.searchTerm = event;
+     this.refresh(0);
    }
 
    pageNumberChange(event) {

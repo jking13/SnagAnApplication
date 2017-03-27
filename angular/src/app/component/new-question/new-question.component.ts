@@ -27,7 +27,6 @@ export class NewQuestionComponent implements OnInit {
   }
 
   doSave(event) {
-    console.log(this.newQuestionForm.value);
     var _this = this;
     this.questionService.saveQuestion(this.newQuestionForm.value)
     .subscribe(result =>_this.router.navigate(['questions']));
