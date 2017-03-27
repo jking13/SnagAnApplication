@@ -1,5 +1,12 @@
+<div class="form-style">
 <form [formGroup]="newQuestionForm" (ngSubmit)="doSave($event)">
-    <input formControlName="question" type="question" placeholder="Question">
-    <input formControlName="answer" type="answer" placeholder="Answer">
-  <button type="submit">Save</button><button (click)="cancel()">Cancel</button>
+    <label><span>Question <span class="required">*</span></span></label>
+    <textarea class="textarea-field" formControlName="question" type="question"></textarea>
+    <br/>
+    <label><span>Answer <span class="required">*</span></span></label>
+    <textarea class="textarea-field" formControlName="answer" type="answer"></textarea>
+    <br/>
+  <span class="form-button"><button type="submit">Save</button></span>
+  <button (click)="cancel()">Cancel</button>
 </form>
+</div>
