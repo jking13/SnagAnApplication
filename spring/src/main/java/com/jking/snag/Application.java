@@ -9,11 +9,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.util.ISO8601DateFormat;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @SpringBootApplication
 @EnableAutoConfiguration
-@EnableWebMvc
 public class Application {
     
     public static void main(String[] args) {
