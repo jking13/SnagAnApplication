@@ -4,6 +4,7 @@ import com.google.common.collect.Lists;
 import com.jking.snag.exception.NoQuestionException;
 import com.jking.snag.question.entity.Question;
 import com.jking.snag.repository.elasticsearch.QuestionRepository;
+import com.jking.snag.validation.QuestionValidator;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -19,15 +20,21 @@ import java.util.List;
 public class QuestionServiceBean implements QuestionService {
 
     private final QuestionRepository questionRepository;
+    private final QuestionValidator validator;
 
     @Autowired
-    public QuestionServiceBean(QuestionRepository questionRepository) {
+    public QuestionServiceBean(QuestionRepository questionRepository,
+                               QuestionValidator validator) {
         this.questionRepository = questionRepository;
+        this.validator = validator;
     }
 
     @Override
     public Question createQuestion(Question question) {
-        return questionRepository.save(question);
+        if(validator.validate(question)){
+            return questionRepository.save(question);
+        }
+        return question;
     }
 
     @Override
@@ -35,7 +42,10 @@ public class QuestionServiceBean implements QuestionService {
         if(!questionRepository.exists(question.getId())){
             throw new NoQuestionException();
         }
-        return questionRepository.save(question);
+        if(validator.validate(question)){
+            return questionRepository.save(question);
+        }
+        return question;
     }
 
     @Override

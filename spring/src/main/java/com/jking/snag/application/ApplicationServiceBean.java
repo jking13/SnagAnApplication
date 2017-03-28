@@ -40,7 +40,10 @@ public class ApplicationServiceBean implements ApplicationService {
         if(!applicationRespository.exists(application.getId())){
             throw new NoApplicationException();
         }
-        return applicationRespository.save(application);
+        if(applicationValidator.validate(application)){
+            return applicationRespository.save(application);
+        }
+        return application;
     }
 
     @Override
